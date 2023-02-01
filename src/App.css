@@ -1,38 +1,96 @@
-.App {
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  color: #4b7551;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #4b7551;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 19px;
+}
+li:first-letter {
+  text-transform: capitalize;
+}
+a {
+  text-decoration: none;
+  color: #7d8995;
+}
+a:hover {
+  color: #ac9a6f;
+}
+.weather-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+.weather-app {
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(161, 255, 206) 0%,
+    rgb(250, 255, 209) 90%
+  );
+  padding: 20px;
+  border: 2px solid #4b75513f;
+  border-radius: 10px;
+}
+.overview {
+  margin-bottom: 20px;
+}
+.units {
+  color: #8a9e52;
+  font-size: 16px;
+  font-weight: 100;
+  position: relative;
+  top: -48px;
+}
+#icon {
+  color: #f0d9da;
+  font-size: 45px;
+  margin-right: 5px;
+  width: 70px;
+  position: relative;
+  top: -30px;
+}
+#currentTemp {
+  color: #3e4d34;
+  font-size: 60px;
+  font-weight: 600;
+  position: relative;
+  top: -18px;
+}
+.active {
+  color: #3e4d34;
+  cursor: default;
+}
+.active:hover {
+  color: #3e4d34;
+  text-decoration: none;
+}
+.weather-forcast {
+  margin-top: 20px;
   text-align: center;
+  color: #3e4d34;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.weather-forcast-date {
+  font-size: 16px;
+  opacity: 0.5;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.weather-forcast-temperature-min {
+  opacity: 0.5;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-forcast-temperatures {
+  font-size: 16px;
+  color: #3e4d34;
 }

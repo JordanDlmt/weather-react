@@ -1,56 +1,76 @@
 import React, { useState } from "react";
 import axios from "axios";
+import WeatherSearch from "./WeatherSearch";
 
-export default function WeatherSearch() {
-  const [city, setCity] = useState("");
-  const [loaded, setLoaded] = useState(false);
-  const [weather, setWeather] = useState({});
-
-  function displayWeather(response) {
-    setLoaded(true);
-    setWeather({
-      temperature: response.data.main.temp,
-      wind: response.data.wind.speed,
-      humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      description: response.data.weather[0].description,
-    });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    let apiKey = "094780c710fa4efd669f0df8c3991927";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeather);
-  }
-
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
-
-  let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" placeholder="Enter a city.." onChange={updateCity} />
-      <button type="Submit">Search</button>
-    </form>
-  );
-
-  if (loaded) {
-    return (
-      <div>
-        {form}
-        <ul>
-          <li>Temperature: {Math.round(weather.temperature)}°C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind}km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
+export default function Weather() {
+  return (
+    <div class="container">
+      <div class="weather-wrapper">
+        <div class="weather-app">
+          <WeatherSearch />
+          <div class="overview">
+            <h1 id="city"></h1>
+            <ul>
+              <li>
+                Last updated: <span id="currentDate"></span>
+              </li>
+              <li id="currentCondition"></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <img src="#" alt="clear" id="icon" />
+              <span id="currentTemp">83</span>
+              <span class="units">
+                <a href="#" id="farenheit-link" class="active">
+                  °F
+                </a>{" "}
+                |
+                <a href="#" id="celcius-link">
+                  C°
+                </a>
+              </span>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>
+                  Humidity: <span id="currentHumidity"></span>%
+                </li>
+                <li>
+                  Wind: <span id="currentWind"></span>mph
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="weather-forcast" id="forecast">
+            <div class="row">
+              <div class="col-2">
+                <div class="weather-forcast-date">Tue</div>
+                <img
+                  src="http://openweathermap.org/img/wn/01d@2x.png"
+                  alt=""
+                  width="60"
+                />
+                <div class="weather-forcast-temperatures">
+                  <span class="weather-forcast-temperature-max">75°</span>
+                  <span class="weather-forcast-temperature-min">24°</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="credit">
+          <small>
+            <a
+              href="https://github.com/JordanDlmt/final-weatherapp"
+              target="_blank"
+            >
+              Open-source code
+            </a>
+            by Darlene Jordan
+          </small>
+        </div>
       </div>
-    );
-  } else {
-    return form;
-  }
+    </div>
+  );
 }
