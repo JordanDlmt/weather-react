@@ -34,8 +34,6 @@ a:hover {
 .weather-wrapper {
   max-width: 600px;
   margin: 30px auto;
-}
-.weather-app {
   background: radial-gradient(
     circle at 10% 20%,
     rgb(161, 255, 206) 0%,
@@ -93,4 +91,7 @@ a:hover {
 .weather-forcast-temperatures {
   font-size: 16px;
   color: #3e4d34;
+}
+footer {
+  text-align: center;
 }
